@@ -83,11 +83,8 @@ public:
 };
 
 int main() {
-    // sandbox for playing with objects
     int choice;
     std::unique_ptr<Circle> object;
-    // created a smart pointer currently set to nullptr
-    // deleted when the object it points to goes out of scope
     std::cout <<"Select an object:\n1.Cylinder\n2.Cone\n3.Sphere\nSelect:";
     std::cin >> choice;
     if (choice == 1) {
@@ -97,9 +94,8 @@ int main() {
         std::cout << "Enter cylinder height:";
         std::cin >> cylHeight;
         object = std::make_unique<Cylinder>(cylRadius,cylHeight);
-    // Instantiated a Cylinder object in the heap passed radius and height
-    // make_unique is the same as the new operator
     }
+
     else if (choice == 2) {
         double coneRadius, coneHeight;
         std::cout << "Enter cone radius:";
@@ -118,15 +114,8 @@ int main() {
         std::cout << "Invalid choice!" << std::endl;
     }
 
-    // Unified interface: we can interact with the object without knowing what shape it took
     object->calcVolume();
     std::cout << object->getVolume() << std::endl;
-
-    // Memory safe because we used smart pointers
-
-
-
-
 
     object->calcVolume();
     std::cout << object->getVolume() << std::endl;
